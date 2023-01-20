@@ -9,7 +9,7 @@ arquivo = "http://www.telecocare.com.br/mapaerbs/ERBs_Nov22.zip" #nao mexer
 nome_arquivo = "ERBs_Nov22.zip" #nao mexer
 documento = "Nov22.xlsx" #nao mexer
 pasta = "Downloaded" #nao mexer
-regiao = "PA"
+regiao = "MG"
 
 def download(url: arquivo, dest_folder: pasta):
     if not os.path.exists(dest_folder):
@@ -40,7 +40,7 @@ download("http://www.telecocare.com.br/mapaerbs/ERBs_Nov22.zip", dest_folder=pas
 
 
 torres_df = rf"Downloaded\{documento}"
-dados = pd.read_excel(torres_df, names=["Estação","Provedor","Estado","Cidade","Vazio","Logradouro","Longitude","Latitude","Nada","Tecnologia"])
+dados = pd.read_excel(torres_df, names=["Estação","Provedor","Estado","Cidade","Vazio","Logradouro","Latitude","Longitude","Nada","Tecnologia"])
 
 # dados = dados.head()
 
@@ -51,7 +51,7 @@ pasta_save_csv = "CSV"
 if not os.path.exists(pasta_save_csv):
     os.makedirs(pasta_save_csv)
 
-torres = dados[["Provedor","Estado", "Longitude", "Latitude"]]
+torres = dados[["Provedor","Estado", "Latitude", "Longitude"]]
 
 torres_estado = torres.loc[dados["Estado"] == estado]
 
